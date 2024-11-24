@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const cors = require('cors');
+
 const { MongoClient, ServerApiVersion } = require('mongodb');
 
 const app = express();
@@ -19,7 +19,7 @@ const client = new MongoClient(uri, {
 });
 
 // Middleware for CORS and JSON
-app.use(cors()); // Allow cross-origin requests
+
 app.use(express.json());
 
 // Serve Static HTML File
