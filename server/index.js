@@ -51,13 +51,18 @@ app.get('/fetchData', async (req, res) => {
 });
 
 // Start the Server
-const server = app.listen(() => {
-    const { address, port } = server.address();
+const PORT = process.env.PORT || 3000; // Default to 3000 if PORT is not set
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+// });
 
-    // Determine the host dynamically for Codespaces or localhost
-    const host = process.env.CODESPACE_NAME
-        ? `${process.env.CODESPACE_NAME}-${port}.githubpreview.dev`
-        : address === '::' || address === '0.0.0.0' ? 'localhost' : address;
+// const server = app.listen(() => {
+//     const { address, port } = server.address();
 
-    console.log(`Server is running on http://${host}:${port}`);
+//     // Determine the host dynamically for Codespaces or localhost
+//     const host = process.env.CODESPACE_NAME
+//         ? `${process.env.CODESPACE_NAME}-${port}.githubpreview.dev`
+//         : address === '::' || address === '0.0.0.0' ? 'localhost' : address;
+
+//     console.log(`Server is running on http://${host}:${port}`);
 });
